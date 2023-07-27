@@ -10,9 +10,8 @@ function UserSearching() {
     const {users, dispatch} = useContext(GithubContext)
     const {setAlert} = useContext(AlertContext)
 
-    const handleChange = (e) => {
-        setText(e.target.value)
-    }
+    const handleChange = (e) => setText(e.target.value)
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -21,8 +20,8 @@ function UserSearching() {
             setAlert('Please enter something', 'error')
         } else {
             dispatch({type: 'SET_LOADING'})
-           const users= await searchUsers(text)
-           dispatch({type: 'GET_USERS', payload: users})
+            const users= await searchUsers(text)
+            dispatch({type: 'GET_USERS', payload: users})
 
             setText ('')
         }
