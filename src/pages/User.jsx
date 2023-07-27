@@ -15,9 +15,8 @@ function User() {
         dispatch({type: 'SET_LOADING'})
        const getUserData = async() => {
         const userData = await getUserAndRepos(params.login)
-        dispatch({type: 'GET_USER-AND_REPOS', payload: userData})
-
-       }
+        dispatch({type: 'GET_USER_AND_REPOS', payload: userData})
+      }
 
        getUserData()
     },[dispatch, params.login])
@@ -41,7 +40,9 @@ function User() {
 
     if(loading) {
         return <Spinner />
-    } else {
+    } 
+
+    const websiteUrl = blog?.startsWith('http') ? blog : 'https://' + blog
   return (
     <>
     <div className="w-full mx-auto lg:w-10/12">
@@ -101,8 +102,8 @@ function User() {
                                 Website
                             </div>
                             <div className="text-lg stat-value">
-                                <a href={`https://${blog}`} target= "_blank" rel="noreferrer">
-                                    {blog}
+                                <a href={websiteUrl} target= "_blank" rel="noreferrer">
+                                    {websiteUrl}
                                 </a>
                             </div>
                         </div>
@@ -173,6 +174,6 @@ function User() {
     </>
   )
     }
-}
+
 
 export default User

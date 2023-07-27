@@ -5,7 +5,7 @@ const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN
 
 const github = axios.create({
     baseURL: GITHUB_URL,
-    headers: { Authorization: `token ${GITHUB_TOKEN}`}
+    headers: { Authorization: `token ${GITHUB_TOKEN}`},
 })
 
  // Fetch users as per the search
@@ -16,6 +16,7 @@ const github = axios.create({
     })
 
     const response = await github.get(`/search/users?${params}`)
+    console.log(response.data.items);
     return response.data.items
 }
 
